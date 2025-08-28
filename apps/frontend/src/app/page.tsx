@@ -2,7 +2,7 @@
 import Hero from "../components/sections/Hero";
 import ProductsContainer from "../components/cards/ProductsContainer";
 import Categories from "../components/sections/Categories";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { fetchProducts } from "../redux/productSlice";
 import { fetchRecentProducts } from "../redux/recentSclice";
@@ -13,13 +13,15 @@ export default function Home() {
   let products = useAppSelector((state) => state.products.products);
   products = products?.slice(0, 5);
   // let [recentProducts, setRecentProducts] = useState<any[]>([]);
-  let recentProducts = useAppSelector((state) => state.recentProducts.products);
+  const recentProducts = useAppSelector(
+    (state) => state.recentProducts.products
+  );
   products = products?.slice(0, 5);
   useEffect(() => {
     // dispatch(fetchRecentProducts());
     dispatch(fetchRecentProducts());
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Hero />

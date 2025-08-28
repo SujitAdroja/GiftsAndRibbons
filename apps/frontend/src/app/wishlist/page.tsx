@@ -7,7 +7,6 @@ import {
 } from "../../serviceProvider/wishlist_services";
 
 import WishlistCard from "../../components/cards/WishlistCard";
-import { Button } from "../../components/ui/button";
 import Link from "next/link";
 import { ProductCardSkeleton } from "../../components/cards/ProductCardSkeleton";
 

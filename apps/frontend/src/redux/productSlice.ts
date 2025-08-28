@@ -5,10 +5,7 @@ import {
   getProductsByCategory,
   getProductsBySearch,
 } from "../serviceProvider/productService";
-import {
-  addToWishlist,
-  getWishlistItems,
-} from "../serviceProvider/wishlist_services";
+import { getWishlistItems } from "../serviceProvider/wishlist_services";
 export type Product = {
   _id: string;
   name: string;

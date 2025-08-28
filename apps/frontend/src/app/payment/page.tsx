@@ -19,7 +19,7 @@ declare global {
 
 export default function Payment() {
   const { cartItems, totalPrice } = useAppSelector((state) => state.cart.cart);
-  const [amount, setAmount] = useState(totalPrice);
+  // const [amount, setAmount] = useState(totalPrice);
   const { user } = useAppSelector((state) => state.user);
   const products = useAppSelector((state) => state.products.products);
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ export default function Payment() {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
   async function handleRazorpayPayment() {
     try {
       const response = await fetch(
@@ -38,9 +38,9 @@ export default function Payment() {
         }
       );
       const data = await response.json();
-      var options = {
+      const options = {
         key: config.RAZORPAY_ID,
-        amount: amount * 100,
+        amount: totalPrice * 100,
         currency: "INR",
         name: "Gift's And Ribbon's",
         description: "Test Transaction",
@@ -71,7 +71,7 @@ export default function Payment() {
           color: "#3399cc",
         },
       };
-      var rzp1 = new window.Razorpay(options);
+      const rzp1 = new window.Razorpay(options);
       rzp1.on("payment.failure", function (response: any) {
         // alert(response.error.code);
         // alert(response.error.description);

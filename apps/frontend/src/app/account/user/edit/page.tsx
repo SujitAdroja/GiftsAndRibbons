@@ -3,12 +3,10 @@
 import { Button } from "apps/frontend/src/components/ui/button";
 import { useAppSelector } from "apps/frontend/src/redux/hook";
 import { updateUserInformation } from "apps/frontend/src/serviceProvider/auth_services";
-import { first } from "lodash";
 import Link from "next/link";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export default function ProfileDetails() {
-  const [editMode, setEditMode] = useState(false);
   const { user, login } = useAppSelector((state) => state.user);
   const [formData, setFormData] = useState({
     firstName: user?.firstName || "",
@@ -22,7 +20,7 @@ export default function ProfileDetails() {
     pincode: user?.address?.pincode || "",
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -51,7 +49,7 @@ export default function ProfileDetails() {
     if (login) {
       await updateUserInformation(newFormData);
     }
-    setEditMode(false); // back to view mode after save
+    // back to view mode after save
   };
 
   if (!login) {

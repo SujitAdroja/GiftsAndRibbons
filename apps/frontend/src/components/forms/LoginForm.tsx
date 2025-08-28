@@ -1,5 +1,4 @@
 "use client";
-
 import { MdArrowRightAlt } from "react-icons/md";
 import Link from "next/link";
 import { useState } from "react";
@@ -10,7 +9,6 @@ import { Button } from "../ui/button";
 export default function LoginForm() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { login } = useAppSelector((state: any) => state.user);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -51,7 +49,8 @@ export default function LoginForm() {
       </h1>
 
       <p className="mb-10 text-[var(--para-primary)]">
-        Welcome to gift's and ribbon's Login to account to get started...
+        Welcome to gift&apos;s and ribbon&apos;s Login to account to get
+        started...
       </p>
 
       <div className="mb-4">

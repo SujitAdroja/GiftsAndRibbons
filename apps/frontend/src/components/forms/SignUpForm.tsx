@@ -1,10 +1,8 @@
 "use client";
 
-import { MdArrowRightAlt } from "react-icons/md";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signup } from "apps/frontend/src/serviceProvider/auth_services";
 import { Button } from "../ui/button";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { useAppDispatch } from "../../redux/hook";
@@ -63,7 +61,8 @@ const SignUpForm = () => {
       </h1>
 
       <p className="mb-5 text-md text-[var(--para-primary)]">
-        Welcome to gift's and ribbon's Create new account to get started...
+        Welcome to gift&apos;s and ribbon&apos;s Create new account to get
+        started...
       </p>
 
       <div className="flex w-full gap-2 mb-4">

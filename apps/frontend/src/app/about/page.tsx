@@ -9,7 +9,7 @@ export default function Aboutpage() {
             <p className="text-lg text-black mb-4 ">
               At
               <span className="ml-1 font-semibold">
-                Gift's and Ribbon's India
+                Gift&apos;s and Ribbon&apos;s India
               </span>
               , we believe every gift should be as special as the person
               receiving it. We specialize in **custom gift hamper packaging**

@@ -44,7 +44,7 @@ export default function ProductCard({
     dispatch(toggleSidebar(true));
   }
 
-  async function addRecentProducts(e: React.MouseEvent) {
+  async function addRecentProducts() {
     await dispatch(
       addProductToRecentlyVisited({
         _id: product._id,

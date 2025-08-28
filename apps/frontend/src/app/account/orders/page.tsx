@@ -1,13 +1,10 @@
 "use client";
-import Link from "next/link";
 
 import { useState, useEffect } from "react";
 import OrderItems from "apps/frontend/src/components/cards/orderItems";
 import { getAllOrders } from "apps/frontend/src/serviceProvider/orderServieces";
-import { GoDotFill } from "react-icons/go";
 
 export default function Order() {
-  // const ordersDetails = await orders.getAllOrders();
   const [ordersDetails, setOrdersDetails] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const getOrders = async () => {

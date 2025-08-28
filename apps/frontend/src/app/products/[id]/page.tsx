@@ -54,7 +54,7 @@ export default function SingleProduct() {
             onClick: () => router.push("/auth/login"),
           },
         });
-      const data = await dispatch(
+      await dispatch(
         addItemToCart({
           productId: product._id,
           quantity: quantity,
@@ -100,7 +100,7 @@ export default function SingleProduct() {
       dispatch(fetchProducts());
       getRelatedProducts();
     }
-  }, []);
+  }, [dispatch]);
 
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })

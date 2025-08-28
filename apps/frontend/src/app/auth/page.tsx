@@ -5,6 +5,6 @@ export default function Auth() {
   const router = useRouter();
   useEffect(() => {
     router.push("/auth/signup");
-  }, []);
+  }, [router]);
   return;
 }

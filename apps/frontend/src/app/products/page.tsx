@@ -9,7 +9,6 @@ import {
 } from "apps/frontend/src/redux/productSlice";
 import Link from "next/link";
 import { GoDotFill } from "react-icons/go";
-import { CgClose } from "react-icons/cg";
 import { Checkbox } from "../../components/ui/checkbox";
 // import { useSearchParams } from "next/navigation";
 import { useDebounce } from "use-debounce";
@@ -24,7 +23,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "apps/frontend/src/components/ui/pagination";
-import path from "path";
 const categories = [
   "Rakhi Hamper",
   "Birthday",

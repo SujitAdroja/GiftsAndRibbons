@@ -50,7 +50,7 @@ export const addItemToCart = createAsyncThunk(
     price: number;
   }) => {
     try {
-      let res = await addToCart(productInfo);
+      const res = await addToCart(productInfo);
       return res;
     } catch (error) {
       return error;
@@ -62,7 +62,7 @@ export const addItemToCart = createAsyncThunk(
 export const updateCartItem = createAsyncThunk(
   "cart/updateCartItem",
   async (item: { productId: string; action: string }) => {
-    let res = await incDecCart(item.productId, item.action);
+    const res = await incDecCart(item.productId, item.action);
     return res;
   }
 );
@@ -72,7 +72,7 @@ export const removeItemFromCart = createAsyncThunk(
   "cart/removeFromCart",
   async (productId: string) => {
     try {
-      let res = await removeFromCart(productId);
+      const res = await removeFromCart(productId);
       return res;
     } catch (error) {
       return error;
@@ -91,7 +91,7 @@ export const checkoutCartItems = createAsyncThunk(
     paymentStatus: string;
   }) => {
     try {
-      let res = await checkOutCart(payment_id, paymentStatus);
+      const res = await checkOutCart(payment_id, paymentStatus);
       return res;
     } catch (error) {
       return error;
