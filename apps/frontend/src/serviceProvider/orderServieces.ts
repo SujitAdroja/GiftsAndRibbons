@@ -15,7 +15,7 @@ export async function getAllOrders() {
   }
 }
 
-export async function findOrder(orderId: String) {
+export async function findOrder(orderId: string) {
   try {
     const res = await fetch(`${config.BACKEND_ENDPOINT}/orders/${orderId}`, {
       method: "GET",
