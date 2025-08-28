@@ -58,13 +58,10 @@ export const signupUser = createAsyncThunk(
   }
 );
 
-export const logOutUser = createAsyncThunk(
-  "user/logout",
-  async (userId: string | undefined) => {
-    const res = await logout(userId);
-    return res;
-  }
-);
+export const logOutUser = createAsyncThunk("user/logout", async () => {
+  const res = await logout();
+  return res;
+});
 
 // ✅ Fetch user details from backend on refresh
 export const fetchUserInformation = createAsyncThunk(

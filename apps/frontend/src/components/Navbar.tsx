@@ -86,7 +86,7 @@ export default function Navbar() {
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="cursor-pointer py-1 text-gray-700 rounded-none hover:rounded-none"
-                  onClick={() => dispatch(logOutUser(user?._id))}
+                  onClick={() => dispatch(logOutUser())}
                 >
                   <p className="font-bold">Logout</p>
                 </DropdownMenuItem>

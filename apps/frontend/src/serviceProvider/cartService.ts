@@ -90,7 +90,7 @@ export async function incDecCart(productId: string, action: string) {
       }
     );
 
-    let { data } = await res.json();
+    const { data } = await res.json();
 
     const updatedCart = {
       ...data.newCart[0],

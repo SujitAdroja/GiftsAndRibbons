@@ -38,7 +38,7 @@ export async function signup(formData: any) {
   }
 }
 
-export async function logout(userId: string | undefined) {
+export async function logout() {
   try {
     const res = await fetch(`${config.BACKEND_ENDPOINT}/auth/logout`, {
       method: "POST",

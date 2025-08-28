@@ -93,7 +93,7 @@ export default function MobileNavbar() {
         </nav>
         <button
           className="border border-black p-1 px-2 absolute bottom-4 border-red-700 text-red-700 left-[50%] translate-x-[-50%] flex justify-center"
-          onClick={() => dispatch(logOutUser(user?._id))}
+          onClick={() => dispatch(logOutUser())}
         >
           Logout
         </button>
