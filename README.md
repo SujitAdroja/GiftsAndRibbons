@@ -1,12 +1,13 @@
-# Ecommerce for E-Gifting Business
-
-## Frontend Endpoint.
+# Gift's and Ribbons
 
 
-## Backend API Endpoint.
+Frontend Endpoint.
+
+
+Backend API Endpoint.
 https://gnr-app.onrender.com/api/
 
-# 🎁 Gifts & Ribbons – Business Website  
+# 🎁 Gifts & Ribbons – Ecommerce Website 
 
 Welcome to the official repository for **Gifts & Ribbons**, a gifting business specializing in curated gifts, elegant ribbons, and custom packaging. This project powers our **business website**, making gifting simple, stylish, and memorable.  
 
