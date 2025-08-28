@@ -1,0 +1,18 @@
+node_modules/
+**/node_modules/
+frontend/.env
+backend/.env
+.ignore
+# Logs
+logs
+*.log
+*.env
+frontend/src/trace
+
+#builds
+/dist
+/backend/build
+.DS_Store
+.dbeaver
+.project
+.opencode

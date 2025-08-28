@@ -1,0 +1,27 @@
+{
+  "name": "gnr-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:web": "cd apps/frontend && npm run dev",
+    "dev:api": "cd apps/backend && npm run build && npm run dev",
+    "dev": "concurrently --names \"dev:web,dev:backend\" --prefix \"[{name}]\" \"npm run dev:web\" \"npm run dev:api\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "react-redux": "^9.2.0",
+    "redux-persist": "^6.0.0",
+    "tailwind-merge": "^3.3.1"
+  }
+}
