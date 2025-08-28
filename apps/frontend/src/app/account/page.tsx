@@ -1,20 +1,16 @@
-import { MdAccountCircle } from "react-icons/md";
-import { FaBoxOpen, FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
-
 import Image from "next/image";
-import profile from "apps/frontend/public/profile.webp";
-import orderImage from "apps/frontend/public/shopping-bag.webp";
+
 const infos = [
   {
     cardName: "Personal Info",
-    icon: profile,
+    icon: "/Images/profile.webp",
     details: "Name, Email, Address",
     route: "user",
   },
   {
     cardName: "Orders Details",
-    icon: orderImage,
+    icon: "/Images/shopping-bag.webp",
     details: "Order Details, Cancle, Track, Return orders",
     route: "orders",
   },

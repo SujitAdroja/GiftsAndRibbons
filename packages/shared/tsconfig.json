@@ -21,6 +21,8 @@
   "include": [
     "src",
     "../../apps/frontend/src/components/components",
-    "../../apps/frontend/src/components/ui"
+    "../../apps/frontend/src/components/ui",
+    "../../apps/frontend/src/components/hooks",
+    "../../apps/frontend/src/components/lib"
   ]
 }
