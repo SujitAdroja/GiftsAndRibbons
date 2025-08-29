@@ -32,6 +32,13 @@ export type WishlistProducts = {
   quantity: number;
   images: string[];
 };
+export type RecentProduct = {
+  _id: string;
+  name: string;
+  description: string;
+  images: string[];
+  price: string;
+};
 
 // ✅ Fetch user details from backend on refresh
 export const fetchRecentProducts = createAsyncThunk(
@@ -46,7 +53,7 @@ export const fetchRecentProducts = createAsyncThunk(
         const wishlist = await getWishlistItems();
         if (!wishlist) return JSON.parse(data);
         const products = JSON.parse(data);
-        const result = products.map((product: any) => {
+        const result = products.map((product: RecentProduct) => {
           const wishlisted = wishlist.some(
             (item: WishlistProducts) => String(item._id) === String(product._id)
           );
@@ -63,19 +70,7 @@ export const fetchRecentProducts = createAsyncThunk(
 
 export const addProductToRecentlyVisited = createAsyncThunk(
   "recent/addProductToRecentlyVisited",
-  async ({
-    _id,
-    name,
-    description,
-    images,
-    price,
-  }: {
-    _id: string;
-    name: string;
-    description: string;
-    images: string[];
-    price: string;
-  }) => {
+  async ({ _id, name, description, images, price }: RecentProduct) => {
     try {
       let items = [];
       const stored = localStorage.getItem("recentlyVisited");

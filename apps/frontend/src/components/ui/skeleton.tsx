@@ -1,8 +1,7 @@
 import { cn } from "apps/frontend/src/components/lib/utils";
 import React from "react";
-interface SkeletonProps extends React.ComponentProps<"div"> {}
 
-function Skeleton({ className, ...props }: SkeletonProps) {
+function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="skeleton"

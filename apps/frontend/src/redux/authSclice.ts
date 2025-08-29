@@ -78,14 +78,6 @@ export const fetchUserInformation = createAsyncThunk(
   }
 );
 
-export const patchUserInformation = createAsyncThunk(
-  "user/patchUserInformation",
-  async (formData: any) => {
-    const res = await updateUserInformation(formData);
-    return res;
-  }
-);
-
 // ✅ Slice
 const userSlice = createSlice({
   name: "user",
