@@ -53,7 +53,7 @@ export default function ProductCard({
         name: product.name,
         description: product.description,
         images: [product.images[0]],
-        price: String(product.price),
+        price: product.price,
       })
     );
   }

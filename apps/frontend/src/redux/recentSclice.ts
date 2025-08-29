@@ -54,7 +54,19 @@ export const fetchRecentProducts = createAsyncThunk(
 
 export const addProductToRecentlyVisited = createAsyncThunk(
   "recent/addProductToRecentlyVisited",
-  async ({ _id, name, description, images, price }: Product) => {
+  async ({
+    _id,
+    name,
+    description,
+    images,
+    price,
+  }: {
+    _id: string;
+    name: string;
+    description: string;
+    images: string[];
+    price: number;
+  }) => {
     try {
       let items = [];
       const stored = localStorage.getItem("recentlyVisited");
