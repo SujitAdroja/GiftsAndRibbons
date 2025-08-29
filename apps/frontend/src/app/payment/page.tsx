@@ -11,16 +11,38 @@ import { checkoutCartItems, removeItemFromCart } from "../../redux/cartSlice";
 import { Button } from "../../components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+interface RazorpayOptions {
+  key: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  image: string;
+  order_id: string;
+  handler: (response: RazorpayPaymentResponse) => void;
+  prefill: {
+    name: string | undefined;
+    email: string | undefined;
+    contact: string | undefined;
+  };
+  theme: {
+    color: string;
+  };
+}
+
+interface RazorpayInstance {
+  open(): void;
+  on(event: string, callback: (response?: any) => void): void;
+}
+
 declare global {
   interface Window {
     Razorpay: {
-      new (options: any): {
-        open(): void;
-        on(event: string, callback: (...args: any[]) => void): void;
-      };
+      new (options: RazorpayOptions): RazorpayInstance;
     };
   }
 }
+
 interface RazorpayPaymentResponse {
   razorpay_payment_id: string;
   razorpay_order_id: string;
@@ -36,6 +58,7 @@ export default function Payment() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
   async function handleRazorpayPayment() {
     try {
       const response = await fetch(
@@ -46,8 +69,8 @@ export default function Payment() {
         }
       );
       const data = await response.json();
-      const options = {
-        key: config.RAZORPAY_ID,
+      const options: RazorpayOptions = {
+        key: config.RAZORPAY_ID ?? "",
         amount: totalPrice * 100,
         currency: "INR",
         name: "Gift's And Ribbon's",
@@ -72,7 +95,7 @@ export default function Payment() {
         prefill: {
           name: user?.name,
           email: user?.email,
-          contact: user?.mobile,
+          contact: String(user?.mobile) ?? "",
         },
 
         theme: {
