@@ -1,15 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getWishlistItems } from "../serviceProvider/wishlist_services";
-
-export type Product = {
-  name: string;
-  productId: string;
-  category: string;
-  description: string;
-  images: string[];
-  price: number;
-  wishlist: boolean;
-};
+import { Product } from "./productSlice";
 
 type ProductState = {
   products: Product[];
@@ -32,13 +23,6 @@ export type WishlistProducts = {
   quantity: number;
   images: string[];
 };
-export type RecentProduct = {
-  _id: string;
-  name: string;
-  description: string;
-  images: string[];
-  price: string;
-};
 
 // ✅ Fetch user details from backend on refresh
 export const fetchRecentProducts = createAsyncThunk(
@@ -53,7 +37,7 @@ export const fetchRecentProducts = createAsyncThunk(
         const wishlist = await getWishlistItems();
         if (!wishlist) return JSON.parse(data);
         const products = JSON.parse(data);
-        const result = products.map((product: RecentProduct) => {
+        const result = products.map((product: Product) => {
           const wishlisted = wishlist.some(
             (item: WishlistProducts) => String(item._id) === String(product._id)
           );
@@ -70,7 +54,7 @@ export const fetchRecentProducts = createAsyncThunk(
 
 export const addProductToRecentlyVisited = createAsyncThunk(
   "recent/addProductToRecentlyVisited",
-  async ({ _id, name, description, images, price }: RecentProduct) => {
+  async ({ _id, name, description, images, price }: Product) => {
     try {
       let items = [];
       const stored = localStorage.getItem("recentlyVisited");
@@ -93,6 +77,13 @@ export const addProductToRecentlyVisited = createAsyncThunk(
         description,
         images,
         price,
+        categoryId: "",
+        createdAt: new Date(),
+        discountPrice: 0,
+        features: [],
+        stoke: 0,
+        tags: [],
+        updatedAt: new Date(),
       });
       localStorage.setItem("recentlyVisited", JSON.stringify(items));
     } catch (error) {

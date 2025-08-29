@@ -12,13 +12,10 @@ export default function Home() {
 
   let products = useAppSelector((state) => state.products.products);
   products = products?.slice(0, 5);
-  // let [recentProducts, setRecentProducts] = useState<any[]>([]);
   const recentProducts = useAppSelector(
     (state) => state.recentProducts.products
   );
-  products = products?.slice(0, 5);
   useEffect(() => {
-    // dispatch(fetchRecentProducts());
     dispatch(fetchRecentProducts());
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -33,7 +30,7 @@ export default function Home() {
               RECENTLY VIEWED
             </h2>
             {/* <ProductsContainer products={recentProducts} /> */}
-            <ProductsContainer products={recentProducts} designIndex={null} />
+            <ProductsContainer products={recentProducts} />
           </div>
         )}
 
@@ -48,7 +45,6 @@ export default function Home() {
             </h2>
           </div>
           <div className="">
-            {/* <ProductsContainer products={products} /> */}
             <ProductsContainer products={products} />
           </div>
         </div>
