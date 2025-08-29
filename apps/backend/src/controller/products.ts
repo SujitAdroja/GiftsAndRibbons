@@ -69,7 +69,7 @@ export const getAllProducts = async (
     const products = await productModel.find();
     if (products.length > 0)
       res.status(200).json({
-        success: false,
+        success: true,
         message: "Products Fetched successfully",
         data: products,
       });

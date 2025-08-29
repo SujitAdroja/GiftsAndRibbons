@@ -23,7 +23,7 @@ import { razorpayRoutes } from "./routes/rozarpay";
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // your frontend origin
+    origin: "https://gnr-red.vercel.app/", // your frontend origin
     credentials: true, // allow cookies to be sent
   })
 );
