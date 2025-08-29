@@ -13,7 +13,12 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 declare global {
   interface Window {
-    Razorpay: any;
+    Razorpay: {
+      new (options: any): {
+        open(): void;
+        on(event: string, callback: (...args: any[]) => void): void;
+      };
+    };
   }
 }
 interface RazorpayPaymentResponse {
