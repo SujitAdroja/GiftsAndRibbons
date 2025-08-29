@@ -14,6 +14,8 @@ export type CartItem = {
   name: string;
   price: number;
   quantity: number;
+  category: string;
+  description: string;
 };
 
 export type Cart = {

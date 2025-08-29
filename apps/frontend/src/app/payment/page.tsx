@@ -7,7 +7,11 @@ import ProductCard from "../../components/cards/productCard";
 import { useEffect } from "react";
 import { fetchProducts, Product } from "../../redux/productSlice";
 import { CgClose } from "react-icons/cg";
-import { checkoutCartItems, removeItemFromCart } from "../../redux/cartSlice";
+import {
+  CartItem,
+  checkoutCartItems,
+  removeItemFromCart,
+} from "../../redux/cartSlice";
 import { Button } from "../../components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -141,7 +145,7 @@ export default function Payment() {
             </Link>
           </div>
           {cartItems &&
-            cartItems.map((product: any) => (
+            cartItems.map((product: CartItem) => (
               <Link
                 href={`/products/${product.productId}`}
                 key={product.productId}
