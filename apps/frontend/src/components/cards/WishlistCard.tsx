@@ -4,7 +4,19 @@ import { Button } from "../ui/button";
 import { useAppDispatch } from "../../redux/hook";
 import { addItemToCart } from "../../redux/cartSlice";
 
-export default function WishlistCard({ item, handleRemoveFromWishlist }: any) {
+export default function WishlistCard({
+  item,
+  handleRemoveFromWishlist,
+}: {
+  item: {
+    _id: string;
+    images: string[];
+    name: string;
+    description: string;
+    price: number;
+  };
+  handleRemoveFromWishlist: (productId: string) => void;
+}) {
   const dispatch = useAppDispatch();
 
   return (

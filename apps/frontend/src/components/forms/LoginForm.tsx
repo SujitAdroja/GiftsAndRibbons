@@ -1,7 +1,7 @@
 "use client";
 import { MdArrowRightAlt } from "react-icons/md";
 import Link from "next/link";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { loginUser } from "../../redux/authSclice";
@@ -14,13 +14,13 @@ export default function LoginForm() {
     password: "",
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {

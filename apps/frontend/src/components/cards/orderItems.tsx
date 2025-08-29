@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { Order } from "../../app/account/orders/page";
 
-export default function OrderItems({ item }: any) {
+export default function OrderItems({ item }: { item: Order }) {
   return (
     <div className="order-card p-4 max-content text-sm mb-5 border bg-[#f7f7f7] sm:shadow-md">
       <div className="hidden  md:flex gap-2 items-start flex-col sm:flex-row sm:gap-8 sm:items-center">

@@ -14,12 +14,18 @@ import { toast } from "sonner";
 import { LuLoaderPinwheel } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import { addProductToRecentlyVisited } from "../../redux/recentSclice";
+import { Product } from "../../redux/productSlice";
 export default function ProductCard({
   product,
   width,
   index,
   designIndex,
-}: any) {
+}: {
+  product: Product;
+  width: string;
+  index: number;
+  designIndex: number;
+}) {
   const [wishlisted, setWishlisted] = useState(product.wishlist || false);
   const [loading, setLoading] = useState(false);
   const { login } = useAppSelector((state) => state.user);
@@ -51,7 +57,7 @@ export default function ProductCard({
         name: product.name,
         description: product.description,
         images: [product.images[0]],
-        price: product.price,
+        price: String(product.price),
       })
     );
   }

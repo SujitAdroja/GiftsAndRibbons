@@ -3,7 +3,13 @@ import { IoClose } from "react-icons/io5";
 import { removeItemFromCart, updateCartItem } from "../../redux/cartSlice";
 import { useAppDispatch } from "../../redux/hook";
 
-export default function CartCard(item: any) {
+export default function CartCard(item: {
+  productId: string;
+  images: string[];
+  name: string;
+  price: number;
+  quantity: number;
+}) {
   const dispatch = useAppDispatch();
   return (
     <div
@@ -54,7 +60,6 @@ export default function CartCard(item: any) {
                     action: "Increment",
                   })
                 );
-                console.log(data.meta.requestStatus);
               }}
             >
               +
