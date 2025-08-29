@@ -33,10 +33,25 @@ interface RazorpayOptions {
     color: string;
   };
 }
-
+interface RazorpayFailureResponse {
+  error: {
+    code: string;
+    description: string;
+    source: string;
+    step: string;
+    reason: string;
+    metadata: {
+      order_id: string;
+      payment_id: string;
+    };
+  };
+}
 interface RazorpayInstance {
   open(): void;
-  on(event: string, callback: (response?: any) => void): void;
+  on(
+    event: "payment.failed",
+    callback: (response: RazorpayFailureResponse) => void
+  ): void;
 }
 
 declare global {
@@ -107,7 +122,7 @@ export default function Payment() {
         },
       };
       const rzp1 = new window.Razorpay(options);
-      rzp1.on("payment.failure", function () {
+      rzp1.on("payment.failed", function () {
         toast("Payment Failed Try Again", {
           action: {
             label: "Close",
