@@ -28,13 +28,13 @@ type OrderItem = {
   totalAmount?: number;
   paymentStatus?: string;
 };
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+
 // export default function OrderDetails({ params }: { params: { id: string } }) {
-export default function OrderDetails({ params }: PageProps) {
+export default function OrderDetails({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const [orderItem, setOrderItem] = useState<OrderItem>({});
 
   async function findProduct() {
