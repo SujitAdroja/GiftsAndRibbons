@@ -15,7 +15,6 @@ import { connectToDatabase } from "./database/schema/connect";
 import { categoryModel } from "./database/schema/category_model";
 import bodyParser from "body-parser";
 import mutler from "multer";
-import Razorpay from "razorpay";
 import { userRoutes } from "./routes/user";
 import { RecentlyVisitedRoutes } from "./routes/recentlyVIsite";
 import { sendEmail } from "./controller/email";
@@ -57,29 +56,6 @@ app.post("/api/category", upload.none(), async (req, res) => {
     console.log(error);
   }
 });
-
-// const razorpay = new Razorpay({
-//   key_id: process.env.RAZORPAY_ID,
-//   key_secret: process.env.RAZORPAY_SECRET,
-// });
-
-// app.post("/razorpay-payment", async (req, res) => {
-//   try {
-//     const amount = req.body.amount;
-//     console.log(amount);
-//     const order = await razorpay.orders.create({
-//       amount: amount * 100,
-//       currency: "INR",
-//       receipt: "receipt_" + Math.random().toString(36).substring(7),
-//     });
-//     console.log(order);
-//     res
-//       .status(200)
-//       .json({ message: "payment success full", orderId: order.id });
-//   } catch (error) {
-//     res.status(404).json({ error: error });
-//   }
-// });
 
 connectToDatabase()
   .then(() => {
