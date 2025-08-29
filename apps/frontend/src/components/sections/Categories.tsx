@@ -27,7 +27,7 @@ const categories = [
   },
   {
     title: "Bouquet",
-    image: "/Images/Category-flowers.webp",
+    image: "/Images/Category_Flowers.webp",
     description: "Beautifully arranged fresh flowers for your loved ones.",
     link: "/products?q=Bouquet",
   },
