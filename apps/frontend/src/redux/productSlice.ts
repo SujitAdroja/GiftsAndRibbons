@@ -6,6 +6,7 @@ import {
   getProductsBySearch,
 } from "../serviceProvider/productService";
 import { getWishlistItems } from "../serviceProvider/wishlist_services";
+import { WishlistProducts } from "./recentSclice";
 export type Product = {
   _id: string;
   name: string;
@@ -36,7 +37,6 @@ const initialState: ProductState = {
   error: null,
   singleProduct: null,
 };
-
 //  Fetch cart from backend
 export const fetchProducts = createAsyncThunk(
   "cart/fetchProducts",
@@ -48,7 +48,7 @@ export const fetchProducts = createAsyncThunk(
     const wishlist = resWishlist || [];
 
     const updatedProducts = products.map((product: Product) => {
-      const isWishlisted = wishlist.some((item: any) => {
+      const isWishlisted = wishlist.some((item: WishlistProducts) => {
         return String(item.productId) === String(product._id);
       });
 
@@ -71,7 +71,7 @@ export const fetchProductsByCategory = createAsyncThunk(
     const wishlist = resWishlist || [];
 
     const updatedProducts = products.map((product: Product) => {
-      const isWishlisted = wishlist.some((item: any) => {
+      const isWishlisted = wishlist.some((item: WishlistProducts) => {
         return String(item.productId) === String(product._id);
       });
 
@@ -93,7 +93,7 @@ export const fetchProductById = createAsyncThunk(
     const wishlist = resWishlist || [];
 
     const updatedProducts = products.map((product: Product) => {
-      const isWishlisted = wishlist.some((item: any) => {
+      const isWishlisted = wishlist.some((item: WishlistProducts) => {
         return String(item.productId) === String(product._id);
       });
 
@@ -116,7 +116,7 @@ export const getProductsBySearching = createAsyncThunk(
     const wishlist = resWishlist || [];
 
     const updatedProducts = products.map((product: Product) => {
-      const isWishlisted = wishlist.some((item: any) => {
+      const isWishlisted = wishlist.some((item: WishlistProducts) => {
         return String(item.productId) === String(product._id);
       });
 

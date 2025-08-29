@@ -16,8 +16,6 @@ export default function ProductsContainer({
           product={product}
           key={product._id}
           width={"min-w-[200px] md:min-w-auto"}
-          index={index}
-          designIndex={designIndex}
         />
       ))}
     </div>

@@ -274,8 +274,7 @@ export default function SingleProduct() {
             <ProductCard
               product={relatedProducts}
               key={relatedProducts._id}
-              index={""}
-              designIndex={null}
+              width=""
             />
           ))
           .slice(0, 5)}

@@ -201,12 +201,7 @@ export default function Products() {
             ) : products && products.length > 0 ? (
               (products || [])
                 ?.map((product: Product) => (
-                  <ProductCard
-                    product={product}
-                    key={product._id}
-                    index={""}
-                    designIndex={null}
-                  />
+                  <ProductCard product={product} key={product._id} width="" />
                 ))
                 .slice((currentPage - 1) * 10, currentPage * 10)
             ) : (

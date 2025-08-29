@@ -34,7 +34,7 @@ export default function OrderItems({ item }: { item: Order }) {
       <hr className="hidden md:block my-4 text-gray-300" />
       <div className="flex flex-col gap-4 mb-2">
         {item.products &&
-          item.products.map((product: any) => (
+          item.products.map((product) => (
             <Link
               href={`/products/${product.productId}`}
               key={product.productId}

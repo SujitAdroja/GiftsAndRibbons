@@ -1,7 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 
-import { fetchCart, toggleSidebar } from "apps/frontend/src/redux/cartSlice";
+import {
+  CartItem,
+  fetchCart,
+  toggleSidebar,
+} from "apps/frontend/src/redux/cartSlice";
 import { useAppDispatch, useAppSelector } from "apps/frontend/src/redux/hook";
 import Link from "next/link";
 import CartCard from "../cards/CartCard";
@@ -9,8 +13,8 @@ import { ProductCardSkeleton } from "../cards/ProductCardSkeleton";
 
 export default function CartSideBar() {
   const [loading, setLoading] = useState(false);
-  const { cartItems } = useAppSelector((state: any) => state.cart.cart);
-  const { sidebarOpen } = useAppSelector((state: any) => state.cart);
+  const { cartItems } = useAppSelector((state) => state.cart.cart);
+  const { sidebarOpen } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -44,7 +48,7 @@ export default function CartSideBar() {
         </div>
         <div className="cartItems-container h-[92%] overflow-auto scrollbar-hide flex flex-col">
           {cartItems?.length > 0 ? (
-            cartItems?.map((item: any) => (
+            cartItems?.map((item: CartItem) => (
               <CartCard key={item.productId} {...item} />
             ))
           ) : (

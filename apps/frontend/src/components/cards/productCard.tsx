@@ -18,13 +18,9 @@ import { Product } from "../../redux/productSlice";
 export default function ProductCard({
   product,
   width,
-  index,
-  designIndex,
 }: {
   product: Product;
   width: string;
-  index: number;
-  designIndex: number;
 }) {
   const [wishlisted, setWishlisted] = useState(product.wishlist || false);
   const [loading, setLoading] = useState(false);
@@ -82,16 +78,14 @@ export default function ProductCard({
     <Link
       href={`/products/${product._id}`}
       className={`group md:hover:shadow-[0_0_8px_1px_rgba(0,0,0,0.1)] border cursor-pointer ${width}  cursor-pointer 
-      ${index === designIndex ? "md:col-span-2 md:row-span-2" : ""}`}
+      `}
       onClick={addRecentProducts}
     >
       <div className="relative ">
         <img
           src={product.images?.[0]}
           alt={product.name}
-          className={`w-full bg-[#F7F7F7] object-cover hover:opacity-100 h-50   ${
-            index === designIndex ? "sm:h-140 " : "sm:h-70"
-          }`}
+          className={`w-full bg-[#F7F7F7] object-cover hover:opacity-100 h-50 sm:h-70`}
         />
         <button className="hidden absolute z-2 w-full bottom-0 left-0 p-1 text-black bg-white p-2 md:group-hover:block transition-all duration-300">
           {wishlisted ? (

@@ -206,12 +206,7 @@ export default function Payment() {
           {products && products.length > 0
             ? (products || [])
                 ?.map((product: Product) => (
-                  <ProductCard
-                    product={product}
-                    key={product._id}
-                    index={""}
-                    designIndex={null}
-                  />
+                  <ProductCard product={product} key={product._id} width="" />
                 ))
                 .slice(0, 8)
             : ""}
