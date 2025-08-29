@@ -3,7 +3,32 @@
 import { useState, useEffect } from "react";
 import OrderItems from "apps/frontend/src/components/cards/orderItems";
 import { getAllOrders } from "apps/frontend/src/serviceProvider/orderServieces";
+export interface OrderProduct {
+  productId: string;
+  productName: string;
+  productDescription: string;
+  category: string;
+  actualPrice: number;
+  quantity: number;
+  images: string[];
+}
 
+export interface Order {
+  _id: string; // orderId
+  userId: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  mobile: string;
+  extension?: string;
+  orderedAt: Date | string;
+  status: string;
+  paymentStatus: string;
+  priceInOrder: number;
+  totalAmount: number;
+  totalQuantity: number;
+  products: OrderProduct[];
+}
 export default function Order() {
   const [ordersDetails, setOrdersDetails] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +49,7 @@ export default function Order() {
     <div className="m-4">
       {ordersDetails?.length > 0 ? (
         ordersDetails
-          .map((item: any) => <OrderItems item={item} key={item._id} />)
+          .map((item: Order) => <OrderItems item={item} key={item._id} />)
           .slice((currentPage - 1) * 3, currentPage * 3)
       ) : (
         <h1 className="text-4xl mt-4">No orders</h1>

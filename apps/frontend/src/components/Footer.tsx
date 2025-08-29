@@ -75,7 +75,8 @@ export default function Footer() {
       {/* Divider Line */}
       <div className="border-t border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-4 text-center text-gray-400 text-sm">
-          © {new Date().getFullYear()} Gift's and Ribbon's. All rights reserved.
+          © {new Date().getFullYear()} Gift&apos;s and Ribbon&apos;s. All rights
+          reserved.
         </div>
       </div>
     </footer>

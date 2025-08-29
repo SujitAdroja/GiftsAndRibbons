@@ -1,5 +1,5 @@
 import { config } from "apps/frontend/config";
-export async function login(formData: any) {
+export async function login(formData: { email: string; password: string }) {
   try {
     const res = await fetch(`${config.BACKEND_ENDPOINT}/auth/login`, {
       method: "POST",
@@ -19,7 +19,13 @@ export async function login(formData: any) {
   }
 }
 
-export async function signup(formData: any) {
+export async function signup(formData: {
+  name: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}) {
   try {
     const res = await fetch(`${config.BACKEND_ENDPOINT}/auth/register`, {
       method: "POST",
@@ -69,7 +75,22 @@ export async function getUserInformation() {
   }
 }
 
-export async function updateUserInformation(formData: any) {
+type UpdateUser = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  mobile: number;
+  extension: string;
+  address: {
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    pincode: number;
+  };
+};
+
+export async function updateUserInformation(formData: UpdateUser) {
   try {
     const res = await fetch(`${config.BACKEND_ENDPOINT}/auth/user`, {
       method: "PATCH",

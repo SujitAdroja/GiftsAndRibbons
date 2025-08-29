@@ -44,7 +44,7 @@ const initialState: UserState = {
 // ✅ Async thunks
 export const loginUser = createAsyncThunk(
   "user/login",
-  async (formData: any) => {
+  async (formData: { email: string; password: string }) => {
     const res = await login(formData);
     return res;
   }
@@ -52,7 +52,13 @@ export const loginUser = createAsyncThunk(
 
 export const signupUser = createAsyncThunk(
   "user/signup",
-  async (formData: any) => {
+  async (formData: {
+    name: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+  }) => {
     const res = await signup(formData);
     return res;
   }

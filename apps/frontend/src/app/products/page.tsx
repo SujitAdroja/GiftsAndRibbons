@@ -6,6 +6,7 @@ import {
   fetchProducts,
   fetchProductsByCategory,
   getProductsBySearching,
+  Product,
 } from "apps/frontend/src/redux/productSlice";
 import Link from "next/link";
 import { GoDotFill } from "react-icons/go";
@@ -199,7 +200,7 @@ export default function Products() {
               </>
             ) : products && products.length > 0 ? (
               (products || [])
-                ?.map((product: any) => (
+                ?.map((product: Product) => (
                   <ProductCard
                     product={product}
                     key={product._id}

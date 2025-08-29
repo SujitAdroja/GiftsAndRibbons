@@ -1,5 +1,4 @@
 "use client";
-
 import { IoClose } from "react-icons/io5";
 import { removeItemFromCart, updateCartItem } from "../../redux/cartSlice";
 import { useAppDispatch } from "../../redux/hook";

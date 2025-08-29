@@ -4,8 +4,8 @@ import Script from "next/script";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import Link from "next/link";
 import ProductCard from "../../components/cards/productCard";
-import { useEffect, useState } from "react";
-import { fetchProducts } from "../../redux/productSlice";
+import { useEffect } from "react";
+import { fetchProducts, Product } from "../../redux/productSlice";
 import { CgClose } from "react-icons/cg";
 import { checkoutCartItems, removeItemFromCart } from "../../redux/cartSlice";
 import { Button } from "../../components/ui/button";
@@ -16,10 +16,13 @@ declare global {
     Razorpay: any;
   }
 }
-
+interface RazorpayPaymentResponse {
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+}
 export default function Payment() {
   const { cartItems, totalPrice } = useAppSelector((state) => state.cart.cart);
-  // const [amount, setAmount] = useState(totalPrice);
   const { user } = useAppSelector((state) => state.user);
   const products = useAppSelector((state) => state.products.products);
   const dispatch = useAppDispatch();
@@ -46,7 +49,7 @@ export default function Payment() {
         description: "Test Transaction",
         image: "https://example.com/your_logo",
         order_id: data.orderId,
-        handler: async function (response: any) {
+        handler: async function (response: RazorpayPaymentResponse) {
           await dispatch(
             checkoutCartItems({
               payment_id: response.razorpay_payment_id,
@@ -72,17 +75,15 @@ export default function Payment() {
         },
       };
       const rzp1 = new window.Razorpay(options);
-      rzp1.on("payment.failure", function (response: any) {
-        // alert(response.error.code);
-        // alert(response.error.description);
-        // alert(response.error.source);
-        // alert(response.error.step);
-        // alert(response.error.reason);
-        // alert(response.error.metadata.order_id);
-        // alert(response.error.metadata.payment_id);
+      rzp1.on("payment.failure", function () {
+        toast("Payment Failed Try Again", {
+          action: {
+            label: "Close",
+            onClick: () => console.log("Close"),
+          },
+        });
       });
 
-      // const rzp1 = new window.Razorpay(options);
       rzp1.open();
     } catch (error) {
       console.log(error);
@@ -204,7 +205,7 @@ export default function Payment() {
         <div className="grid grid-cols-2 gap-0 md:col-span-5 sm:grid-cols-2 gap-5 lg:grid-cols-4 lg:grid-cols-3  lg:gap-7">
           {products && products.length > 0
             ? (products || [])
-                ?.map((product: any) => (
+                ?.map((product: Product) => (
                   <ProductCard
                     product={product}
                     key={product._id}

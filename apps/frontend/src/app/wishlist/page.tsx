@@ -10,6 +10,17 @@ import WishlistCard from "../../components/cards/WishlistCard";
 import Link from "next/link";
 import { ProductCardSkeleton } from "../../components/cards/ProductCardSkeleton";
 
+interface WishlistProducts {
+  _id: string;
+  productId: string;
+  name: string;
+  description: string;
+  category: string;
+  price: number;
+  quantity: number;
+  images: string[];
+}
+
 export default function WishlistPage() {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -40,7 +51,7 @@ export default function WishlistPage() {
             <ProductCardSkeleton width="w-full" />
           </>
         ) : wishlistItems?.length > 0 ? (
-          wishlistItems?.map((item: any) => (
+          wishlistItems?.map((item: WishlistProducts) => (
             <WishlistCard
               key={item._id}
               item={item}

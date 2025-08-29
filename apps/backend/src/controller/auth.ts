@@ -2,8 +2,6 @@ import { userModel } from "../database/schema/user_model";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
-import mongoose from "mongoose";
-import { auth } from "../middleware/auth";
 
 export const registerUser = async (req: Request, res: Response) => {
   const { firstName, lastName, email, password } = req.body;

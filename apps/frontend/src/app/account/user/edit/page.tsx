@@ -4,7 +4,7 @@ import { Button } from "apps/frontend/src/components/ui/button";
 import { useAppSelector } from "apps/frontend/src/redux/hook";
 import { updateUserInformation } from "apps/frontend/src/serviceProvider/auth_services";
 import Link from "next/link";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 export default function ProfileDetails() {
   const { user, login } = useAppSelector((state) => state.user);
@@ -28,21 +28,21 @@ export default function ProfileDetails() {
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newFormData = {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
-      mobile: formData.mobile,
+      mobile: +formData.mobile,
       extension: "+91",
       address: {
         addressLine1: formData.addressLine1,
         addressLine2: formData.addressLine2,
         city: formData.city,
         state: formData.state,
-        pincode: formData.pincode,
+        pincode: +formData.pincode,
       },
     };
 

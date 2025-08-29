@@ -3,6 +3,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { findOrder } from "apps/frontend/src/serviceProvider/orderServieces";
 
+type Products = {
+  productId: string;
+  productName: string;
+  category: string;
+  actualPrice: number;
+  productDescription: string;
+  quantity: number;
+  images: string[];
+};
+
 type OrderItem = {
   _id?: string;
   payment_id?: string;
@@ -13,7 +23,7 @@ type OrderItem = {
   address?: string;
   orderedAt?: Date;
   status?: string;
-  products?: any[];
+  products?: Products[];
   totalQuantity?: number;
   totalAmount?: number;
   paymentStatus?: string;
@@ -45,14 +55,16 @@ export default function OrderDetails({ params }: { params: { id: string } }) {
         : undefined;
       console.log(data);
       setOrderItem(data);
-    } catch (e: any) {
-      console.log(e.message);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      }
     }
   }
 
   useEffect(() => {
     findProduct();
-  }, []);
+  }, [findProduct]);
 
   return (
     <div className="m-4 border bg-[#f7f7f7] p-4 sm:shadow-md">
@@ -69,7 +81,7 @@ export default function OrderDetails({ params }: { params: { id: string } }) {
 
         <div className="ordered_item_list flex flex-col gap-4 mb-4">
           {orderItem.products &&
-            orderItem.products?.map((product: any) => (
+            orderItem.products?.map((product: Products) => (
               <Link
                 href={`/products/${product.productId}`}
                 key={product.productId}

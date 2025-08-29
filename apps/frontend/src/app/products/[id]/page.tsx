@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "apps/frontend/src/redux/hook";
 import {
   fetchProductById,
   fetchProducts,
+  Product,
 } from "apps/frontend/src/redux/productSlice";
 import { useParams, useRouter } from "next/navigation";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -45,7 +46,7 @@ export default function SingleProduct() {
   const product = singleProduct && singleProduct[0] ? singleProduct[0] : null;
   const [wishlisted, setWishlisted] = useState(product?.wishlist || false);
 
-  async function handleAddtoCart(product: any) {
+  async function handleAddtoCart() {
     try {
       if (!login)
         return toast(`Please Login First →`, {
@@ -67,7 +68,7 @@ export default function SingleProduct() {
     }
   }
 
-  async function handleWishlist(productId: string) {
+  async function handleWishlist() {
     try {
       if (!login)
         return toast(`Please Login First →`, {
@@ -76,7 +77,7 @@ export default function SingleProduct() {
             onClick: () => router.push("/auth/login"),
           },
         });
-      await addToWishlist(productId);
+      await addToWishlist(product._id);
       setWishlisted(true);
       toast(`${product.name} Added To Wishlist`, {
         action: {
@@ -193,12 +194,10 @@ export default function SingleProduct() {
           </div>
           <div className="flex items-center gap-2 mb-6 border-b border-gray-300 pb-4">
             <button
-              onClick={() => {
-                handleAddtoCart(product);
-              }}
+              onClick={handleAddtoCart}
               className="flex items-center gap-2 px-6 py-2 text-white border font-semibold bg-teal-500 cursor-pointer hover:bg-teal-600"
             >
-              <CiShoppingCart size={20} />{" "}
+              <CiShoppingCart size={20} />
               <span className="text-base">Add To Cart</span>
             </button>
             {wishlisted || product?.wishlist ? (
@@ -208,7 +207,7 @@ export default function SingleProduct() {
               </button>
             ) : (
               <button
-                onClick={() => handleWishlist(product._id)}
+                onClick={handleWishlist}
                 className="flex items-center gap-2 p-4 px-6 py-2 border font-semibold cursor-pointer hover:border-black hover:text-black"
               >
                 <CiHeart size={20} />
@@ -271,7 +270,7 @@ export default function SingleProduct() {
       {/* <div className="flex gap-6 py-4 w-full overflow-scroll no-scrollbar "> */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
         {(relatedProducts || [])
-          ?.map((relatedProducts: any, index: number) => (
+          ?.map((relatedProducts: Product) => (
             <ProductCard
               product={relatedProducts}
               key={relatedProducts._id}

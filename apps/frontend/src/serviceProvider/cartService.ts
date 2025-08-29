@@ -1,6 +1,20 @@
 import { config } from "apps/frontend/config";
 
-export async function addToCart(productInfo: any) {
+export interface CartItems {
+  productId: string;
+  quantity: number;
+  price: number;
+  name: string;
+  images: string[];
+  description: string;
+  category: string;
+}
+
+export async function addToCart(productInfo: {
+  productId: string;
+  quantity: number;
+  price: number;
+}) {
   try {
     const res = await fetch(`${config.BACKEND_ENDPOINT}/carts/addToCart`, {
       method: "POST",
@@ -13,7 +27,7 @@ export async function addToCart(productInfo: any) {
     let { data } = await res.json();
     data = data[0];
     const totalPrice = data?.cartItems.reduce(
-      (sum: any, i: any) => sum + i.price,
+      (sum: number, i: CartItems) => sum + i.price,
       0
     );
     const updatedCart = {
@@ -37,7 +51,7 @@ export async function getCart() {
     let { data } = await res.json();
     data = data[0];
     const totalPrice = data?.cartItems.reduce(
-      (sum: any, i: any) => sum + i.price,
+      (sum: number, i: CartItems) => sum + i.price,
       0
     );
     const updatedCart = {
@@ -52,7 +66,7 @@ export async function getCart() {
   }
 }
 
-export async function removeFromCart(productId: any) {
+export async function removeFromCart(productId: string) {
   try {
     const res = await fetch(
       `${config.BACKEND_ENDPOINT}/carts/remove/${productId}`,
@@ -65,7 +79,7 @@ export async function removeFromCart(productId: any) {
     let { data } = await res.json();
     data = data[0];
     const totalPrice = data?.cartItems.reduce(
-      (sum: any, i: any) => sum + i.price,
+      (sum: number, i: CartItems) => sum + i.price,
       0
     );
     const updatedCart = {

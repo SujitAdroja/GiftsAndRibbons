@@ -22,6 +22,16 @@ const initialState: ProductState = {
   loading: false,
   error: null,
 };
+export type WishlistProducts = {
+  _id: string;
+  productId: string;
+  name: string;
+  description: string;
+  category: string;
+  price: number;
+  quantity: number;
+  images: string[];
+};
 
 // ✅ Fetch user details from backend on refresh
 export const fetchRecentProducts = createAsyncThunk(
@@ -38,7 +48,7 @@ export const fetchRecentProducts = createAsyncThunk(
         const products = JSON.parse(data);
         const result = products.map((product: any) => {
           const wishlisted = wishlist.some(
-            (item: any) => String(item._id) === String(product._id)
+            (item: WishlistProducts) => String(item._id) === String(product._id)
           );
           return { ...product, wishlist: wishlisted };
         });
@@ -53,7 +63,19 @@ export const fetchRecentProducts = createAsyncThunk(
 
 export const addProductToRecentlyVisited = createAsyncThunk(
   "recent/addProductToRecentlyVisited",
-  async ({ _id, name, description, images, price }: any) => {
+  async ({
+    _id,
+    name,
+    description,
+    images,
+    price,
+  }: {
+    _id: string;
+    name: string;
+    description: string;
+    images: string[];
+    price: string;
+  }) => {
     try {
       let items = [];
       const stored = localStorage.getItem("recentlyVisited");

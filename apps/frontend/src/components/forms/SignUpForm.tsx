@@ -21,7 +21,7 @@ const SignUpForm = () => {
     password: "",
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -31,7 +31,6 @@ const SignUpForm = () => {
     try {
       e.preventDefault();
 
-      // const res = await signup(formData);
       const res = await dispatch(signupUser(formData));
       if (res) {
         toast("Account Created Successfully", {
