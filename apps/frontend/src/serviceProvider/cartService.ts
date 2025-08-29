@@ -25,6 +25,7 @@ export async function addToCart(productInfo: {
       body: JSON.stringify(productInfo),
     });
     let { data } = await res.json();
+    console.log(data);
     data = data[0];
     const totalPrice = data?.cartItems.reduce(
       (sum: number, i: CartItems) => sum + i.price,
