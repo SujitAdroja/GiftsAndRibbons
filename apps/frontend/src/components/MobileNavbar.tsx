@@ -11,18 +11,16 @@ import { logOutUser } from "../redux/authSclice";
 export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.user);
+  const { user, login } = useAppSelector((state) => state.user);
   const menuItems = [
     { name: "Home", link: "/" },
     { name: "Products", link: "/products" },
-    { name: "About Us", link: "/about" },
-    { name: "Contact Us", link: "/contact" },
-  ];
-  const userMenuItems = [
-    { name: "Profile", link: "/account/user" },
     { name: "Orders", link: "/account/orders" },
     { name: "Wishlist", link: "/wishlist" },
+    { name: "Profile", link: "/account/user" },
     { name: "Edit Profile", link: "/account/user/edit" },
+    { name: "About Us", link: "/about" },
+    { name: "Contact Us", link: "/contact" },
   ];
 
   return (
@@ -77,26 +75,25 @@ export default function MobileNavbar() {
               </li>
             ))}
           </ul>
-          <ul>
-            {userMenuItems.map((item, index) => (
-              <li key={index}>
-                <Link
-                  href={item.link}
-                  className="block text-gray-700 p-2  border-b"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </nav>
-        <button
-          className="border border-black p-1 px-2 absolute bottom-4 border-red-700 text-red-700 left-[50%] translate-x-[-50%] flex justify-center"
-          onClick={() => dispatch(logOutUser())}
-        >
-          Logout
-        </button>
+        {login ? (
+          <button
+            className="border border-black p-1 px-2 absolute bottom-4 border-red-700 text-red-700 left-[50%] translate-x-[-50%] flex justify-center"
+            onClick={() => dispatch(logOutUser())}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link
+            href={"/auth/login"}
+            className="border border-black p-1 px-2 absolute bottom-4 border-teal-600 text-teal-600 left-[50%] translate-x-[-50%] flex justify-center"
+            onClick={() => {
+              dispatch(toggleSidebar(false));
+            }}
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

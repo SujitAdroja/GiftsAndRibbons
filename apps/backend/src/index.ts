@@ -22,7 +22,7 @@ import { razorpayRoutes } from "./routes/rozarpay";
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_ENDPOINT, // your frontend origin
+    origin: ["http://localhost:3000", process.env.FRONTEND_ENDPOINT], // your frontend origin
     credentials: true, // allow cookies to be sent
   })
 );

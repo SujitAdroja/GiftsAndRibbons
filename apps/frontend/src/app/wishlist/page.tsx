@@ -38,7 +38,7 @@ export default function WishlistPage() {
     setLoading(false);
   }, []);
   return (
-    <div className="container mx-auto py-5 px-4 md:px-0">
+    <section className="container mx-auto py-5 px-4 md:px-0 mb-50">
       <h1 className="text-xl font-bold mb-5 text-[var(--title-primary)]">
         My Wishlist
       </h1>
@@ -59,8 +59,8 @@ export default function WishlistPage() {
             />
           ))
         ) : (
-          <div className="col-span-6 h-200 flex flex-col items-center">
-            <h2 className="text-center font-bold text-2xl mt-20 mb-4">
+          <div className="col-span-6 h-150 flex flex-col items-center">
+            <h2 className="text-center text-[var(--title-primary)] font-bold text-2xl mt-20 mb-4">
               No items in wishlist
             </h2>
             <p className="mb-5 text-center text-gray-500 text-xl">
@@ -75,6 +75,6 @@ export default function WishlistPage() {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

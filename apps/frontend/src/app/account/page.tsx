@@ -18,7 +18,7 @@ const infos = [
 
 export default function Account() {
   return (
-    <div className=" m-4 p-4">
+    <section className=" m-4 p-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 mb-40 lg:grid-cols-2 gap-4 ">
         {infos.map((info, index) => (
           <div
@@ -42,6 +42,6 @@ export default function Account() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

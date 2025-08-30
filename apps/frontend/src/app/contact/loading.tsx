@@ -1,10 +1,10 @@
-import { ImSpinner9 } from "react-icons/im";
+import { CgSpinnerTwo } from "react-icons/cg";
 
 export default function Loader() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="w-16 h-16">
-        <ImSpinner9 size={50} className="animate-spin" />
+        <CgSpinnerTwo size={50} className="animate-spin text-teal-600" />
       </div>
     </div>
   );

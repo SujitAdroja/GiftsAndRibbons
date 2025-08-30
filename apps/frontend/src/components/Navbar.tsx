@@ -20,10 +20,13 @@ export default function Navbar() {
 
   return (
     // <div className="fixed top-0 w-full z-10 shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white hidden md:block py-4 font-medium mx-auto">
-    <div className=" w-full z-10 shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white hidden md:block py-4 font-medium mx-auto">
+    <div className="w-full z-10 shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white hidden md:block py-4 font-medium mx-auto">
       <div className="container mx-auto flex gap-4 justify-between items-center">
         <div className="flex items-center gap-25 text-[var(--title-primary)]">
-          <Link href={"/"} className="logo cursor-pointer text-black text-2xl">
+          <Link
+            href={"/"}
+            className="logo cursor-pointer text-black text-2xl font-semibold"
+          >
             GNR
           </Link>
           <div className="navItems text-sm text-[var(--text-primary)] hidden md:block">

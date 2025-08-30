@@ -142,7 +142,7 @@ export default function Payment() {
   }
 
   return (
-    <div className="container mx-auto max-w-4xl pt-10 sm:pt-20 mb-40 px-5">
+    <section className="container mx-auto max-w-4xl pt-10 sm:pt-20 mb-40 px-5">
       <div className="grid grid-col-1 sm:grid-cols-5 sm:gap-4 mb-10 sm:mb-20">
         <div className="sm:col-span-3">
           <div className="flex items-center justify-between p-2 bg-teal-50 border rounded mb-4">
@@ -259,6 +259,6 @@ export default function Payment() {
             : ""}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

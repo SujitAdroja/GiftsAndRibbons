@@ -53,7 +53,7 @@ const SignUpForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="container text-center mx-auto max-w-md"
+      className="container text-center mx-auto max-w-md px-2 sm:px-0"
     >
       <h1 className="text-2xl font-bold tracking-wider uppercase text-[var(--title-primary)] mb-4">
         Create an account

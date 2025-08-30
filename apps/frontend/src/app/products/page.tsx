@@ -117,7 +117,7 @@ export default function Products() {
   }, [searchParams, dispatch]); // Depend on searchParams
 
   return (
-    <div className="py-5 mb-50">
+    <section className="py-5 mb-50">
       <h3 className="hidden md:flex items-center gap-2 text-sm text-[var(--para-primary)] sm:font-semi-bold tracking-tight mb-6 ml-4">
         <Link href={`/`} className="hover:text-black ">
           &larr; Home
@@ -157,7 +157,7 @@ export default function Products() {
           ))}
         </ul>
       </div>
-      <div className="grid grid-cols-6  md:border-t md:border-b">
+      <div className="grid grid-cols-6  md:border-t">
         {/* main filter container*/}
         <div className="hidden md:block col-span-2 lg:col-span-1 md:p-5 border-r">
           <h2 className="text-md font-bold tracking-wider mb-2">FILTERS</h2>
@@ -191,7 +191,7 @@ export default function Products() {
         </div>
 
         <div className="col-span-6 md:col-span-4 lg:col-span-5 sm:p-5">
-          <div className="grid grid-cols-2 gap-0 px-5 md:col-span-5 sm:grid-cols-2 gap-5 lg:grid-cols-3 lg:grid-cols-5 lg:gap-7 mb-4">
+          <div className="grid grid-cols-2 gap-0 px-5 md:col-span-5 sm:grid-cols-2 gap-5 lg:grid-cols-3 lg:grid-cols-5 lg:gap-7 mb-6 md:mb-10">
             {loading ? (
               <>
                 <ProductCardSkeleton width="w-full" />
@@ -246,6 +246,6 @@ export default function Products() {
           </Pagination>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

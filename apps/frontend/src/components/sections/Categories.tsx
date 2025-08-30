@@ -8,7 +8,7 @@ const categories = [
     link: "/products?q=Birthday",
   },
   {
-    title: "Hamper",
+    title: "Gift Box",
     image: "/Images/GiftBox.webp",
     description: "Customized gift hampers with a unique personal touch.",
     link: "/products?q=Gift Box",

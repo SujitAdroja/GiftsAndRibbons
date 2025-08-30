@@ -71,7 +71,7 @@ export default function OrderDetails({
   }, [findProduct]);
 
   return (
-    <div className="m-4 border bg-[#f7f7f7] p-4 sm:shadow-md">
+    <section className="m-4 border bg-[#f7f7f7] p-4 sm:shadow-md">
       <div className="text-sm mb-5">
         <div className="flex flex-wrap justify-between items-center">
           <h3 className="text-black font-semibold">
@@ -161,6 +161,6 @@ export default function OrderDetails({
           <p className="">{orderItem.address}</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

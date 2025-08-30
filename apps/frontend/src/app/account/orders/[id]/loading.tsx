@@ -1,10 +1,10 @@
-import { LuLoaderPinwheel } from "react-icons/lu";
+import { CgSpinnerTwo } from "react-icons/cg";
 
 export default function Loader() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="w-16 h-16">
-        <LuLoaderPinwheel size={50} className="animate-spin" />
+        <CgSpinnerTwo size={50} className="animate-spin text-teal-600" />
       </div>
     </div>
   );

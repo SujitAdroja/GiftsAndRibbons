@@ -36,7 +36,7 @@ export const loginUser = async (req: Request, res: Response) => {
   try {
     const user = await userModel.findOne({ email });
 
-    if (!user) return res.status(404).json({ error: "User not found" });
+    if (!user) return res.status(401).json({ error: "User not found" });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(401).json({ error: "Invalid credentials" });

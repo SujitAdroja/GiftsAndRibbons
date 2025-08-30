@@ -1,6 +1,10 @@
 "use client";
 import { useState } from "react";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { Button } from "../../components/ui/button";
+import { config } from "apps/frontend/config";
+import { toast } from "sonner";
+import { CgSpinnerTwo } from "react-icons/cg";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,11 +13,12 @@ export default function Contact() {
     number: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    fetch("http://localhost:5000/api/email", {
+    setLoading(true);
+    fetch(`${config.BACKEND_ENDPOINT}/email`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,20 +28,33 @@ export default function Contact() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          console.log("Email sent successfully:", data);
+          toast("Email send successfully");
+          setFormData({ name: "", email: "", number: "", message: "" });
+          setLoading(false);
         } else {
-          console.error("Error sending email:", data.error);
+          toast("Error sending an Email");
+          setLoading(false);
         }
       })
       .catch((error) => {
         console.error("Error:", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
-    <div className="container mx-auto  my-10">
+    <section className="container mx-auto my-10">
+      {loading ? (
+        <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center bg-[rgba(0,0,0,0.2)]">
+          <CgSpinnerTwo size={50} className="animate-spin text-teal-600" />
+        </div>
+      ) : (
+        ""
+      )}
       <div className="max-w-2xl mx-auto px-2 sm:px-0">
-        <h2 className="mb-5 md:mb-10 text-3xl font-bold text-center text-[var(--text-primary)]">
+        <h2 className="mb-5 md:mb-10 text-3xl font-bold text-center text-[var(--title-primary)]">
           Contact Us
         </h2>
         <p className="  mx-auto text-[16px] font-[400]  mb-2">
@@ -115,17 +133,18 @@ export default function Contact() {
             </div>
 
             <div className="w-full relative mt-2">
-              <button
+              <Button
+                variant="teal"
                 type="submit"
-                className="flex items-center justify-center text-[17px] gap-2 bg-black text-white border py-2 px-4 font-[400] cursor-pointer"
+                className="flex items-center justify-center gap-2 border py-2 px-4 font-[400] cursor-pointer"
               >
                 <span>Send</span>
                 <MdOutlineKeyboardDoubleArrowRight />
-              </button>
+              </Button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

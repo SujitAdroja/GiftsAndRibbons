@@ -40,7 +40,7 @@ export default function PersonalInfo() {
   }
 
   return (
-    <div className="p-4 sm:px-10 sm:m-4 sm:border sm:shadow-md">
+    <section className="p-4 sm:px-10 sm:m-4 sm:border sm:shadow-md">
       <h3 className="font-bold sm:p-4 border-b">Profile Details</h3>
       <div className="py-4 sm:px-8">
         <div className="grid grid-cols-3 gap-y-4 gap-x-4 text-gray-800 text-md">
@@ -67,6 +67,6 @@ export default function PersonalInfo() {
           </Button>
         </Link>
       </div>
-    </div>
+    </section>
   );
 }
