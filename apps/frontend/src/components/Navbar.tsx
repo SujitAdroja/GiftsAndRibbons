@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     // <div className="fixed top-0 w-full z-10 shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white hidden md:block py-4 font-medium mx-auto">
-    <div className="w-full z-10 shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white hidden md:block py-4 font-medium mx-auto">
+    <div className="w-full sm:px-6 z-10 shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white hidden md:block py-4 font-medium mx-auto">
       <div className="container mx-auto flex gap-4 justify-between items-center">
         <div className="flex items-center gap-25 text-[var(--title-primary)]">
           <Link
@@ -73,7 +73,7 @@ export default function Navbar() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="py-1 cursor-pointer text-gray-700 hover:font-semibold hover:rounded-none">
-                  <Link href={"/account/wishlist"} className="w-full">
+                  <Link href={"/wishlist"} className="w-full">
                     Wishlist
                   </Link>
                 </DropdownMenuItem>

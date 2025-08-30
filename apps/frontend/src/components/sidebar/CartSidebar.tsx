@@ -85,17 +85,6 @@ export default function CartSideBar() {
                 Checkout
               </Link>
             </div>
-            // <div className="flex justify-center items-center px-4 mt-auto mb-4">
-            //   <Script src="https://checkout.razorpay.com/v1/checkout.js" />
-            //   <button
-            //     onClick={() => {
-            //       handleRazorpayPayment(totalPrice);
-            //     }}
-            //     className="bg-black  text-white  px-4 py-2 w-full cursor-pointer hover:bg-gray-800 trasition-all duration-200"
-            //   >
-            //     pay {totalPrice}
-            //   </button>
-            // </div>
           )
         )}
       </div>

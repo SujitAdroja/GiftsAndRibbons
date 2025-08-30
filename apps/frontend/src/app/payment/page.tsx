@@ -145,19 +145,21 @@ export default function Payment() {
     <section className="container mx-auto max-w-4xl pt-10 sm:pt-20 mb-40 px-5">
       <div className="grid grid-col-1 sm:grid-cols-5 sm:gap-4 mb-10 sm:mb-20">
         <div className="sm:col-span-3">
-          <div className="flex items-center justify-between p-2 bg-teal-50 border rounded mb-4">
-            <div>
-              <h3 className="font-semibold text-md">
-                Deliver To : {user?.name}
-              </h3>
+          <div className="w-full flex items-center justify-between p-2 bg-teal-50 border rounded mb-4">
+            <div className="w-full">
+              <div className="w-full flex items-center justify-between">
+                <h3 className="font-semibold text-md">
+                  Deliver To : {user?.name}
+                </h3>
+                <Link
+                  href={"/account/user/edit"}
+                  className="p-1 rounded text-sm text-teal-500 hover:text-teal-700 cursor-pointer"
+                >
+                  Change Address
+                </Link>
+              </div>
               <p className="text-sm text-[var(--para-primary)]">{`${user?.address.addressLine1} ${user?.address.addressLine2} ${user?.address.city}...`}</p>
             </div>
-            <Link
-              href={"/account/user/edit"}
-              className="border border-teal-500 p-1 rounded text-sm text-teal-500 cursor-pointer"
-            >
-              Change Address
-            </Link>
           </div>
           {cartItems &&
             cartItems.map((product: CartItem) => (
@@ -249,13 +251,13 @@ export default function Payment() {
         <h2 className="mb-10 sm:mb-20 text-[var(--title-primary)] font-bold text-2xl text-center">
           You Might Also Like This
         </h2>
-        <div className="grid grid-cols-2 gap-0 md:col-span-5 sm:grid-cols-2 gap-5 lg:grid-cols-4 lg:grid-cols-3  lg:gap-7">
+        <div className="grid grid-cols-2 gap-0 md:col-span-5 sm:grid-cols-2 gap-5 lg:grid-cols-3 lg:grid-cols-3  lg:gap-7">
           {products && products.length > 0
             ? (products || [])
                 ?.map((product: Product) => (
                   <ProductCard product={product} key={product._id} width="" />
                 ))
-                .slice(0, 8)
+                .slice(0, 6)
             : ""}
         </div>
       </div>

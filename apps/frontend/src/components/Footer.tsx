@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-50 mt-50">
+    <footer className="w-full bg-gray-50 mt-50 sm:px-6">
       <div className="container mx-auto py-12 px-2 ">
         {/* Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

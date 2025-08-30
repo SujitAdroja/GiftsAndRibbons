@@ -81,7 +81,7 @@ export const addProductToRecentlyVisited = createAsyncThunk(
         }
       }
       // Add new data at start, limit to 5
-      if (items?.length === 5) items.pop();
+      if (items?.length === 4) items.pop();
       items = items.filter((item) => item._id !== _id);
       items.unshift({
         _id,

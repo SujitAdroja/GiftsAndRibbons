@@ -130,7 +130,7 @@ export default function SingleProduct() {
   }
 
   return (
-    <section className="container mx-auto py-5 mb-10 px-4">
+    <section className="container mx-auto lg:max-w-7xl py-5 mb-10 px-4 md:px-6">
       <p className="flex items-center gap-2 text-md text-[var(--para-primary)] sm:font-semi-bold tracking-tight mb-5">
         <Link href={`/products`} className="hover:text-black ">
           &larr; Products

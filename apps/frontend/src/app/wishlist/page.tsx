@@ -38,7 +38,7 @@ export default function WishlistPage() {
     setLoading(false);
   }, []);
   return (
-    <section className="container mx-auto py-5 px-4 md:px-0 mb-50">
+    <section className="container mx-auto py-5 px-2 lg:max-w-7xl mb-50">
       <h1 className="text-xl font-bold mb-5 text-[var(--title-primary)]">
         My Wishlist
       </h1>

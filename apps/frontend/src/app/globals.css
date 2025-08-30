@@ -54,10 +54,6 @@ html {
   padding: 0;
 }
 
-html::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
 body {
   font-family: var(--font-poppins), sans-serif;
 }

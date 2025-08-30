@@ -117,7 +117,7 @@ export default function Products() {
   }, [searchParams, dispatch]); // Depend on searchParams
 
   return (
-    <section className="py-5 mb-50">
+    <section className="container lg:max-w-7xl mx-auto py-5 mb-50">
       <h3 className="hidden md:flex items-center gap-2 text-sm text-[var(--para-primary)] sm:font-semi-bold tracking-tight mb-6 ml-4">
         <Link href={`/`} className="hover:text-black ">
           &larr; Home
@@ -191,7 +191,7 @@ export default function Products() {
         </div>
 
         <div className="col-span-6 md:col-span-4 lg:col-span-5 sm:p-5">
-          <div className="grid grid-cols-2 gap-0 px-5 md:col-span-5 sm:grid-cols-2 gap-5 lg:grid-cols-3 lg:grid-cols-5 lg:gap-7 mb-6 md:mb-10">
+          <div className="grid grid-cols-2 gap-0 px-5 md:col-span-5 sm:grid-cols-2 gap-5 lg:grid-cols-3 lg:grid-cols-4 lg:gap-7 mb-6 md:mb-10">
             {loading ? (
               <>
                 <ProductCardSkeleton width="w-full" />
@@ -203,7 +203,7 @@ export default function Products() {
                 ?.map((product: Product) => (
                   <ProductCard product={product} key={product._id} width="" />
                 ))
-                .slice((currentPage - 1) * 10, currentPage * 10)
+                .slice((currentPage - 1) * 8, currentPage * 8)
             ) : (
               <div className="col-span-6 h-200 flex flex-col items-center">
                 <h2 className="text-center font-bold text-2xl mt-20 mb-4 text-teal-600">
